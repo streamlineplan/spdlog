@@ -54,8 +54,8 @@ struct async_factory_impl {
     }
 };
 
-using async_factory = async_factory_impl<LoggerType, async_overflow_policy::block>;
-using async_factory_nonblock = async_factory_impl<LoggerType, async_overflow_policy::overrun_oldest>;
+using async_factory = async_factory_impl<async_logger, async_overflow_policy::block>;
+using async_factory_nonblock = async_factory_impl<async_logger, async_overflow_policy::overrun_oldest>;
 
 template <typename Sink, typename... SinkArgs>
 inline std::shared_ptr<spdlog::logger> create_async(std::string logger_name,
